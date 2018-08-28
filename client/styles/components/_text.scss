@@ -1,0 +1,55 @@
+.Text {
+  color: $text-color-normal;
+}
+
+/* Text Weights */
+
+.Text--regular {
+  font-weight: 400;
+}
+
+.Text--medium {
+  font-weight: 500;
+}
+
+.Text--bold {
+  font-weight: 700;
+}
+
+/* Text Sizes */
+.Text--xl {
+  font-size: $font-size-xl;
+}
+
+.Text--lg {
+  font-size: $font-size-lg;
+}
+
+.Text--md {
+  font-size: $font-size-md;
+}
+
+.Text--body {
+  font-size: $font-size-body;
+}
+
+.Text--sm {
+  font-size: $font-size-sm;
+}
+
+/* Text Colors */
+.Text--light {
+  color: $text-color-light;
+}
+
+.Text--blue {
+  color: $blue;
+}
+
+.Text--red {
+  color: $red;
+}
+
+.Text--green {
+  color: $green;
+}
