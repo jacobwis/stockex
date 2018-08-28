@@ -1,0 +1,5 @@
+{
+  "ext": "js graphql",
+  "exec": "node server.js",
+  "watch": ["api/"]
+}

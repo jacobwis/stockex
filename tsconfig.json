@@ -1,0 +1,10 @@
+{
+  "compilerOptions": {
+    "noImplicitAny": true,
+    "jsx": "react",
+    "skipLibCheck": true,
+    "lib": ["dom", "es6"]
+  },
+  "include": ["client/**/*"],
+  "exclude": ["client/**/*.test.ts", "client/**/*.test.tsx"]
+}

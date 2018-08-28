@@ -1,0 +1,10 @@
+type Quote {
+  symbol: String
+  companyName: String
+  latestPrice: Float
+  changePercent: Float
+}
+
+extend type Query {
+  quoteList(name: String): [Quote]
+}
