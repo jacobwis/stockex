@@ -1,0 +1,16 @@
+.ChangePill {
+  align-items: center;
+  background-color: hsl(0, 0, 90);
+  display: inline-flex;
+  justify-content: center;
+  height: 32px;
+  width: 64px;
+}
+
+.ChangePill--positive {
+  background-color: $green-bg;
+}
+
+.ChangePill--negative {
+  background-color: $red-bg;
+}
