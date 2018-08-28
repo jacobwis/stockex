@@ -24,4 +24,10 @@ describe('<Card />', () => {
 
     expect(card).toHaveClassName('CustomClass');
   });
+
+  it('should have the class "Card__round" if "props.round" equals true', () => {
+    const card = shallow(<Card round />);
+
+    expect(card).toHaveClassName('Card__round');
+  });
 });

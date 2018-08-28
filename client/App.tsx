@@ -6,7 +6,7 @@ import Card from './components/Card';
 const App: React.StatelessComponent = () => {
   return (
     <MainLayout>
-      <Card>
+      <Card round>
         <h1>aldkmas</h1>
       </Card>
     </MainLayout>
