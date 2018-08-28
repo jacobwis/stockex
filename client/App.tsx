@@ -1,11 +1,14 @@
 import * as React from 'react';
 import { hot } from 'react-hot-loader';
+import { QuoteListQuery } from './graphql';
 
 const App: React.StatelessComponent = () => {
   return (
-    <div>
-      <h1>Hello</h1>
-    </div>
+    <QuoteListQuery name="mostactive">
+      {({ data }) => {
+        return <div />;
+      }}
+    </QuoteListQuery>
   );
 };
 

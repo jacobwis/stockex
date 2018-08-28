@@ -6,5 +6,5 @@ type Quote {
 }
 
 extend type Query {
-  quoteList(name: String): [Quote]
+  quoteList(name: String!): [Quote]
 }
