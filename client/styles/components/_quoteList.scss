@@ -15,11 +15,11 @@
   padding: 16px;
   min-width: 0;
 
-  &:hover {
+  @include hover {
     background-color: hsl(0, 0, 95);
   }
 
-  &:active {
+  @include active {
     background-color: #fff;
   }
 }

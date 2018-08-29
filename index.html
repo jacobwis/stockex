@@ -6,6 +6,13 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>StockEx</title>
   <link async href="https://fonts.googleapis.com/css?family=Roboto:400,500,700,900" rel="stylesheet">
+  <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+  
+  <script>
+    $(document).on('mq4hsChange', function (e) {
+    $(document.documentElement).toggleClass('true-hover', e.trueHover);
+    });
+  </script>  
 </head>
 <body>
   <div id="root"></div>
