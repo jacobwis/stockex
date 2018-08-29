@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { QuoteListQuery } from '../graphql';
+import { QuoteListQuery, NewsQuery } from '../graphql';
 import Card from './Card';
 import Text from './Text';
 import QuoteList from './QuoteList';
@@ -48,6 +48,14 @@ const HomeView: React.StatelessComponent = () => {
             return <QuoteList quotes={data.quoteList} />;
           }}
         </QuoteListQuery>
+      </div>
+      <div>
+        <NewsQuery>
+          {({ data }) => {
+            console.log(data);
+            return <div />;
+          }}
+        </NewsQuery>
       </div>
     </Card>
   );
