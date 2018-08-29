@@ -1,0 +1,20 @@
+.QuoteList {
+  padding: 0;
+}
+
+.QuoteList__info {
+  min-width: 0;
+  padding-right: 16px;
+}
+
+.QuoteList__item {
+  display: flex;
+  text-decoration: none;
+  justify-content: space-between;
+  padding: 16px;
+  min-width: 0;
+
+  &:hover {
+    background-color: hsl(0, 0, 95);
+  }
+}

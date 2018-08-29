@@ -86,6 +86,11 @@ describe('<Text />', () => {
     expect(textEl).toHaveClassName('Text--xl');
   });
 
+  it('should have the class ".Text--truncate" if "props.truncate" equals true', () => {
+    const textEl = shallow(<Text truncate />);
+    expect(textEl).toHaveClassName('Text--truncate');
+  });
+
   it('"props.weight" should be "regular" by default', () => {
     const textEl = mount(<Text />);
     expect(textEl).toHaveProp('weight', 'regular');

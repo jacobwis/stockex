@@ -8,6 +8,7 @@ const QUERY = gql`
     quoteList(name: $name) {
       companyName
       symbol
+      changePercent
     }
   }
 `;

@@ -2,6 +2,13 @@
   color: $text-color-normal;
 }
 
+.Text--truncate {
+  overflow-x: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+  white-space: nowrap;
+}
+
 /* Text Weights */
 
 .Text--regular {

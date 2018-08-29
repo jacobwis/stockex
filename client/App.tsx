@@ -1,18 +1,30 @@
 import * as React from 'react';
 import { hot } from 'react-hot-loader';
+import { QuoteListQuery } from './graphql';
 import MainLayout from './components/MainLayout';
+import QuoteList from './components/QuoteList';
 import Card from './components/Card';
-import Text from './components/Text';
-import ChangePill from './components/ChangePill';
 
 const App: React.StatelessComponent = () => {
   return (
     <MainLayout>
-      <Card round>
-        <div style={{ padding: '30px' }}>
-          <ChangePill change={0.53} />
-        </div>
-      </Card>
+      <QuoteListQuery name="mostactive">
+        {({ data }) => {
+          if (!data) {
+            return <div />;
+          }
+
+          return (
+            <div style={{ width: '500px' }}>
+              <Card>
+                <div style={{ width: '300px', padding: '16px' }}>
+                  <QuoteList quotes={data.quoteList} />
+                </div>
+              </Card>
+            </div>
+          );
+        }}
+      </QuoteListQuery>
     </MainLayout>
   );
 };

@@ -5,6 +5,7 @@ interface Props {
   color?: 'light' | 'blue' | 'red' | 'green';
   element?: string | React.ComponentType;
   size?: 'sm' | 'body' | 'md' | 'lg' | 'xl';
+  truncate?: boolean;
   weight?: 'regular' | 'medium' | 'bold';
 }
 
@@ -19,6 +20,7 @@ const Text: React.StatelessComponent<Props> = props => {
     'Text--md': props.size === 'md',
     'Text--lg': props.size === 'lg',
     'Text--xl': props.size === 'xl',
+    'Text--truncate': props.truncate,
     'Text--regular': props.weight === 'regular',
     'Text--medium': props.weight === 'medium',
     'Text--bold': props.weight === 'bold'
