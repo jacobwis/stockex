@@ -38,6 +38,11 @@ describe('<Text />', () => {
     expect(textEl).toHaveClassName('Text');
   });
 
+  it('should pass "props.className" to the element', () => {
+    const textEl = shallow(<Text className="CustomClass" />);
+    expect(textEl).toHaveClassName('CustomClass');
+  });
+
   it('"props.element" should be "p" by default', () => {
     const textEl = mount(<Text />);
 

@@ -8,6 +8,7 @@
 }
 
 .QuoteList__item {
+  background-color: #fff;
   display: flex;
   text-decoration: none;
   justify-content: space-between;
@@ -16,5 +17,9 @@
 
   &:hover {
     background-color: hsl(0, 0, 95);
+  }
+
+  &:active {
+    background-color: #fff;
   }
 }

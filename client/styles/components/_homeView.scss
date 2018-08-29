@@ -1,0 +1,32 @@
+.HomeView {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-areas: 'active' 'gainers' 'losers';
+  grid-row-gap: 16px;
+  grid-column-gap: 16px;
+
+  @include min-width('md') {
+    grid-template-areas: 'active active' 'gainers losers';
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.HomeView__section {
+  padding: 0 16px;
+}
+
+.HomeView__heading {
+  padding: 16px;
+}
+
+.HomeView__active {
+  grid-area: active;
+}
+
+.HomeView__gainers {
+  grid-area: gainers;
+}
+
+.HomeView__losers {
+  grid-area: losers;
+}

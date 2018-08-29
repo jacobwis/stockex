@@ -3,6 +3,7 @@ import cn from 'classnames';
 
 interface Props {
   color?: 'light' | 'blue' | 'red' | 'green';
+  className?: string;
   element?: string | React.ComponentType;
   size?: 'sm' | 'body' | 'md' | 'lg' | 'xl';
   truncate?: boolean;
@@ -10,7 +11,7 @@ interface Props {
 }
 
 const Text: React.StatelessComponent<Props> = props => {
-  const classStr = cn('Text', {
+  const classStr = cn('Text', props.className, {
     'Text--light': props.color === 'light',
     'Text--blue': props.color === 'blue',
     'Text--red': props.color === 'red',

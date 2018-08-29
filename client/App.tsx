@@ -4,11 +4,13 @@ import { QuoteListQuery } from './graphql';
 import MainLayout from './components/MainLayout';
 import QuoteList from './components/QuoteList';
 import Card from './components/Card';
+import HomeView from './components/HomeView';
 
 const App: React.StatelessComponent = () => {
   return (
     <MainLayout>
-      <QuoteListQuery name="mostactive">
+      <HomeView />
+      {/* <QuoteListQuery name="mostactive">
         {({ data }) => {
           if (!data) {
             return <div />;
@@ -24,7 +26,7 @@ const App: React.StatelessComponent = () => {
             </div>
           );
         }}
-      </QuoteListQuery>
+      </QuoteListQuery> */}
     </MainLayout>
   );
 };

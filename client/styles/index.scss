@@ -1,4 +1,5 @@
 // Abstracts
+@import 'abstracts/breakpoints';
 @import 'abstracts/colors';
 @import 'abstracts/fontSizes';
 
@@ -9,6 +10,7 @@
 // Components
 @import 'components/card';
 @import 'components/changePill';
+@import 'components/homeView';
 @import 'components/mainLayout';
 @import 'components/navBar';
 @import 'components/quoteList';

@@ -19,6 +19,7 @@ const config = {
     contentBase: [path.join(__dirname, 'assets')],
     compress: true,
     hot: true,
+    host: '0.0.0.0',
     overlay: true,
     port: 3000,
     proxy: {
