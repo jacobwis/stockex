@@ -6,6 +6,7 @@ const MainLayout: React.StatelessComponent = props => {
     <div className="MainLayout">
       <NavBar />
       <div className="MainLayout__content">{props.children}</div>
+      <div style={{ height: '70px' }} />
     </div>
   );
 };

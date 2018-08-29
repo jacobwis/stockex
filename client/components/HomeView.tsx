@@ -3,10 +3,11 @@ import { QuoteListQuery, NewsQuery } from '../graphql';
 import Card from './Card';
 import Text from './Text';
 import QuoteList from './QuoteList';
+import NewsList from './NewsList';
 
 const HomeView: React.StatelessComponent = () => {
   return (
-    <Card className="HomeView">
+    <Card className="HomeView" round>
       <div className="HomeView__section HomeView__active">
         <Text className="HomeView__heading" size="lg" weight="bold">
           Active Today
@@ -49,11 +50,17 @@ const HomeView: React.StatelessComponent = () => {
           }}
         </QuoteListQuery>
       </div>
-      <div>
+      <div className="HomeView__section HomeView__news">
+        <Text className="HomeView__heading" size="lg" weight="bold">
+          Latest News
+        </Text>
         <NewsQuery>
           {({ data }) => {
-            console.log(data);
-            return <div />;
+            if (!data) {
+              return <div />;
+            }
+
+            return <NewsList news={data.news} />;
           }}
         </NewsQuery>
       </div>

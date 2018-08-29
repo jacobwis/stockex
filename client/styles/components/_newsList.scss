@@ -1,20 +1,13 @@
-.QuoteList {
+.NewsList {
   padding: 0;
 }
 
-.QuoteList__info {
-  min-width: 0;
-  padding-right: 16px;
-}
-
-.QuoteList__item {
+.NewsList__item {
   background-color: #fff;
   border-radius: 4px;
-  display: flex;
+  display: block;
   text-decoration: none;
-  justify-content: space-between;
   padding: 16px;
-  min-width: 0;
 
   @include hover {
     background-color: hsl(0, 0, 95);
@@ -23,4 +16,8 @@
   @include active {
     background-color: #fff;
   }
+}
+
+.NewsList__headline {
+  margin-bottom: 3px;
 }
