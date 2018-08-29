@@ -1,0 +1,8 @@
+type SearchResult {
+  symbol: String
+  name: String
+}
+
+extend type Query {
+  search(q: String!): [SearchResult]
+}
