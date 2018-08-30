@@ -115,4 +115,9 @@ describe('<Text />', () => {
     const textEl = shallow(<Text weight="bold" />);
     expect(textEl).toHaveClassName('Text--bold');
   });
+
+  it('should pass "props.testID" to the element', () => {
+    const textEl = shallow(<Text testID="text-1" />);
+    expect(textEl).toHaveProp('data-testid', 'text-1');
+  });
 });

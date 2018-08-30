@@ -6,6 +6,7 @@ interface Props {
   className?: string;
   element?: string | React.ComponentType;
   size?: 'sm' | 'body' | 'md' | 'lg' | 'xl';
+  testID?: string;
   truncate?: boolean;
   weight?: 'regular' | 'medium' | 'bold';
 }
@@ -29,7 +30,11 @@ const Text: React.StatelessComponent<Props> = props => {
 
   const TAG = props.element;
 
-  return <TAG className={classStr}>{props.children}</TAG>;
+  return (
+    <TAG className={classStr} data-testid={props.testID}>
+      {props.children}
+    </TAG>
+  );
 };
 
 Text.defaultProps = {
