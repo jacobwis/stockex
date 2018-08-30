@@ -1,3 +1,11 @@
 .NavBar {
   height: 70px;
 }
+
+.NavBar__inner {
+  height: 100%;
+  align-items: center;
+  display: flex;
+  max-width: 960px;
+  margin: 0 auto;
+}
