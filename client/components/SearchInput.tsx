@@ -1,24 +1,24 @@
 import * as React from 'react';
 import cn from 'classnames';
-import { debounce } from 'lodash';
 import { List } from 'react-virtualized';
-import { SearchQuery } from '../graphql';
+import { SearchResult } from '../graphql';
 import Text from './Text';
 
-interface State {
-  query: string;
-  isFocused: boolean;
+interface Props {
+  onChange?: (value: string) => void;
+  searchResults?: SearchResult[];
 }
 
-class SearchInput extends React.Component<{}, State> {
-  public state = {
-    query: '',
-    isFocused: false
-  };
+interface State {
+  isFocused: boolean;
+  query: string;
+}
 
-  public debouncedOnChange = debounce((value: string) => {
-    this.setState(() => ({ query: value }));
-  }, 200);
+class SearchInput extends React.Component<Props, State> {
+  public state = {
+    isFocused: false,
+    query: ''
+  };
 
   public handleClickOutside = (e: React.MouseEvent<HTMLElement>) => {
     const wrapper = document.getElementById('wrapper');
@@ -30,76 +30,83 @@ class SearchInput extends React.Component<{}, State> {
 
   public onBlur = () => {
     this.setState({ isFocused: false, query: '' });
+    this.props.onChange && this.props.onChange('');
     // @ts-ignore
     document.removeEventListener('click', this.handleClickOutside);
   };
 
   public onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = e.target;
-    this.debouncedOnChange(value);
+
+    this.setState(() => ({ query: value }));
+
+    this.props.onChange && this.props.onChange(value);
   };
 
   public onFocus = () => {
-    this.setState({ isFocused: true });
+    this.setState(() => ({
+      isFocused: true
+    }));
+
     // @ts-ignore
     document.addEventListener('click', this.handleClickOutside);
   };
 
   public render() {
+    const { searchResults } = this.props;
+    const { isFocused, query } = this.state;
+
+    const shouldShowResults = searchResults && isFocused;
+    const menuHeight =
+      searchResults &&
+      (searchResults.length > 4 ? 200 : searchResults.length * 48);
+
     const classStr = cn('SearchInput', {
-      'SearchInput--focused': this.state.isFocused
+      'SearchInput--focused': isFocused
     });
 
     return (
-      <SearchQuery q={this.state.query}>
-        {({ data }) => {
-          const results = data.search;
-          const shouldShowResults = results && this.state.isFocused;
-          const menuHeight =
-            results && (results.length > 4 ? 200 : results.length * 48);
-          return (
-            <div className="SearchInput__wrapper" id="wrapper">
-              <div className={classStr}>
-                <input
-                  className="SearchInput__input"
-                  type="text"
-                  onChange={this.onChange}
-                  onFocus={this.onFocus}
-                  placeholder="Search"
-                />
-                {shouldShowResults && (
-                  <div className="SearchInput__results">
-                    <List
-                      height={menuHeight}
-                      rowHeight={48}
-                      rowCount={results.length}
-                      width={300}
-                      rowRenderer={({ key, index, style }) => {
-                        const result = results[index];
-                        return (
-                          <a
-                            className="SearchInput__result"
-                            key={key}
-                            href="#"
-                            style={style}
-                          >
-                            <Text color="light" truncate>
-                              <Text weight="medium" element="span">
-                                {result.symbol}
-                              </Text>
-                              {result.name && ` - ${result.name}`}
-                            </Text>
-                          </a>
-                        );
-                      }}
-                    />
-                  </div>
-                )}
-              </div>
+      <div className="SearchInput__wrapper" id="wrapper">
+        <div className={classStr}>
+          <input
+            className="SearchInput__input"
+            data-testid="search-input"
+            onChange={this.onChange}
+            onFocus={this.onFocus}
+            placeholder="Search"
+            type="text"
+            value={query}
+          />
+          {shouldShowResults && (
+            <div className="SearchInput__results" data-testid="search-results">
+              <List
+                height={menuHeight}
+                rowHeight={48}
+                rowCount={searchResults.length}
+                width={300}
+                rowRenderer={({ key, index, style }) => {
+                  const result = searchResults[index];
+                  return (
+                    <a
+                      className="SearchInput__result"
+                      key={key}
+                      href={`/${result.symbol}`}
+                      style={style}
+                    >
+                      <Text color="light" truncate>
+                        <Text weight="medium" element="span">
+                          {result.symbol}
+                        </Text>
+                        {result.name && ` - ${result.name}`}
+                      </Text>
+                    </a>
+                  );
+                }}
+              />
             </div>
-          );
-        }}
-      </SearchQuery>
+          )}
+        </div>
+      </div>
     );
   }
 }

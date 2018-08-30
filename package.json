@@ -8,7 +8,8 @@
     "dev:client": "webpack-dev-server",
     "dev:api": "nodemon",
     "dev": "concurrently \"yarn dev:client\" \"yarn dev:api\"",
-    "start": "NODE_ENV=production PORT=3000 node server.js"
+    "start": "NODE_ENV=production PORT=3000 node server.js",
+    "test": "jest"
   },
   "jest": {
     "setupFiles": [
