@@ -44,9 +44,9 @@
 }
 
 .StockView__chart {
-  background-color: hsl(0, 0, 95);
   grid-area: chart;
-  height: 480px;
+  min-width: 0;
+  padding: 0 32px;
 }
 
 .StockView__description {

@@ -1,6 +1,7 @@
 import 'jest-enzyme';
 import * as React from 'react';
-import { mount } from 'enzyme';
+import { MockedProvider } from 'react-apollo/test-utils';
+import { mount, shallow } from 'enzyme';
 import StockView from '../StockView';
 
 const mockStock = {
@@ -24,7 +25,11 @@ const mockStock = {
 
 describe('<StockView />', () => {
   it('the element displaying the stocks change percent should have the class .Text--green if "stock.changePercent" is positive', () => {
-    const wrap = mount(<StockView stock={mockStock} />);
+    const wrap = mount(
+      <MockedProvider>
+        <StockView stock={mockStock} />
+      </MockedProvider>
+    );
     expect(wrap.find('[data-testid="change-percent"]')).toHaveClassName(
       '.Text--green'
     );
@@ -32,12 +37,14 @@ describe('<StockView />', () => {
 
   it('the element displaying the stocks change percent should have the class .Text--red if "stock.changePercent" is negative', () => {
     const wrap = mount(
-      <StockView
-        stock={{
-          ...mockStock,
-          changePercent: -0.12
-        }}
-      />
+      <MockedProvider>
+        <StockView
+          stock={{
+            ...mockStock,
+            changePercent: -0.12
+          }}
+        />
+      </MockedProvider>
     );
     expect(wrap.find('[data-testid="change-percent"]')).toHaveClassName(
       '.Text--red'
@@ -45,12 +52,20 @@ describe('<StockView />', () => {
   });
 
   it('the element displaying the stocks change percent should be properly formatted', () => {
-    const wrap = mount(<StockView stock={mockStock} />);
+    const wrap = mount(
+      <MockedProvider>
+        <StockView stock={mockStock} />
+      </MockedProvider>
+    );
     expect(wrap.find('[data-testid="change-percent"]')).toHaveText('1.96%');
   });
 
   it('the element displaying the stocks price should be properly formated', () => {
-    const wrap = mount(<StockView stock={mockStock} />);
+    const wrap = mount(
+      <MockedProvider>
+        <StockView stock={mockStock} />
+      </MockedProvider>
+    );
     expect(wrap.find('[data-testid="latest-price"]')).toHaveText('227.30');
   });
 });

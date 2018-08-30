@@ -1,0 +1,8 @@
+type ChartPoint {
+  label: String
+  value: Float
+}
+
+extend type Query {
+  chartFromSymbol(symbol: String!): [ChartPoint]
+}
