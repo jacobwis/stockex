@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { Link } from 'react-router-dom';
 import { Quote } from '../graphql';
 import Text from './Text';
 import ChangePill from './ChangePill';
@@ -7,7 +8,7 @@ export const QuoteListItem: React.StatelessComponent<{ quote: Quote }> = ({
   quote
 }) => {
   return (
-    <a className="QuoteList__item" href={`/${quote.symbol}`}>
+    <Link className="QuoteList__item" to={`/${quote.symbol}`}>
       <div className="QuoteList__info">
         <Text weight="medium">{quote.symbol}</Text>
         <Text color="light" size="sm" truncate>
@@ -15,7 +16,7 @@ export const QuoteListItem: React.StatelessComponent<{ quote: Quote }> = ({
         </Text>
       </div>
       <ChangePill change={quote.changePercent} />
-    </a>
+    </Link>
   );
 };
 

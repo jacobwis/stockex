@@ -36,13 +36,13 @@ describe('<QuoteList />', () => {
 });
 
 describe('<QuoteListItem />', () => {
-  it('should render an anchor element', () => {
+  it('should render a Link component', () => {
     const item = shallow(<QuoteListItem quote={mockQuote} />);
-    expect(item).toHaveTagName('a');
+    expect(item).toHaveTagName('Link');
   });
 
-  it('the anchor element have an href equal to the quotes symbol', () => {
+  it('the Link component should have a "to" prop equal to the quotes symbol', () => {
     const item = shallow(<QuoteListItem quote={mockQuote} />);
-    expect(item).toHaveProp('href', `/${mockQuote.symbol}`);
+    expect(item).toHaveProp('to', `/${mockQuote.symbol}`);
   });
 });

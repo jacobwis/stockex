@@ -24,7 +24,8 @@ const config = {
     port: 3000,
     proxy: {
       '/graphql': 'http://localhost:3001'
-    }
+    },
+    historyApiFallback: true
   },
   entry: './client/index.tsx',
   mode: IS_PROD ? 'production' : 'development',

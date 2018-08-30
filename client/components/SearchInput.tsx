@@ -1,5 +1,6 @@
 import * as React from 'react';
 import cn from 'classnames';
+import { Link } from 'react-router-dom';
 import { List } from 'react-virtualized';
 import { SearchResult } from '../graphql';
 import Text from './Text';
@@ -87,11 +88,12 @@ class SearchInput extends React.Component<Props, State> {
                 rowRenderer={({ key, index, style }) => {
                   const result = searchResults[index];
                   return (
-                    <a
+                    <Link
                       className="SearchInput__result"
                       key={key}
-                      href={`/${result.symbol}`}
+                      to={`/${result.symbol}`}
                       style={style}
+                      onClick={this.onBlur}
                     >
                       <Text color="light" truncate>
                         <Text weight="medium" element="span">
@@ -99,7 +101,7 @@ class SearchInput extends React.Component<Props, State> {
                         </Text>
                         {result.name && ` - ${result.name}`}
                       </Text>
-                    </a>
+                    </Link>
                   );
                 }}
               />

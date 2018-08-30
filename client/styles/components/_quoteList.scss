@@ -3,8 +3,9 @@
 }
 
 .QuoteList__info {
-  min-width: 0;
+  flex: 1;
   padding-right: 16px;
+  min-width: 0;
 }
 
 .QuoteList__item {

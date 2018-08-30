@@ -1,5 +1,6 @@
 import 'jest-enzyme';
 import * as React from 'react';
+import { MemoryRouter } from 'react-router-dom';
 import { shallow, mount } from 'enzyme';
 import SearchInput from '../SearchInput';
 
@@ -93,7 +94,11 @@ describe('<SearchInput />', () => {
   });
 
   it('the search results container should render a link for each result', () => {
-    const wrapper = mount(<SearchInput searchResults={mockResults} />);
+    const wrapper = mount(
+      <MemoryRouter>
+        <SearchInput searchResults={mockResults} />
+      </MemoryRouter>
+    );
     wrapper.setState({ isFocused: true });
 
     const searchResults = wrapper.find('.SearchInput__result');
