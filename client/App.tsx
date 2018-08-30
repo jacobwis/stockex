@@ -10,7 +10,13 @@ const App: React.StatelessComponent = () => {
     <MainLayout>
       <Switch>
         <Route path="/" exact component={HomeView} />
-        <Route path="/:symbol" component={StockView} />
+        <Route
+          path="/:symbol"
+          render={props => {
+            const symbol = props.match.params.symbol;
+            return <div />;
+          }}
+        />
       </Switch>
     </MainLayout>
   );

@@ -1,0 +1,21 @@
+type Stock {
+  symbol: String
+  companyName: String
+  description: String
+  latestPrice: Float
+  changePercent: Float
+  open: Float
+  high: Float
+  low: Float
+  volume: Float
+  averageVolume: Float
+  dividendYield: Float
+  week52High: Float
+  week52Low: Float
+  marketCap: Float
+  peRatio: Float
+}
+
+extend type Query {
+  stockFromSymbol(symbol: String!): Stock
+}
