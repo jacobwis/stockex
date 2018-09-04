@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { Quote } from '../graphql';
 import Text from './Text';
 import ChangePill from './ChangePill';
+import Placeholder from './Placeholder';
 
 export const QuoteListItem: React.StatelessComponent<{ quote: Quote }> = ({
   quote
@@ -25,6 +26,18 @@ interface Props {
 }
 
 const QuoteList: React.StatelessComponent<Props> = props => {
+  if (!props.quotes) {
+    return (
+      <div className="QuoteList__loading">
+        <Placeholder delay={500}>
+          <span>
+            <i className="far fa-spin fa-spinner-third" />
+          </span>
+        </Placeholder>
+      </div>
+    );
+  }
+
   return (
     <div className="QuoteList">
       {props.quotes &&

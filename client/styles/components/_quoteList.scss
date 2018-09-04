@@ -2,6 +2,16 @@
   padding: 0;
 }
 
+.QuoteList__loading {
+  align-items: center;
+  display: flex;
+  font-size: 30px;
+  justify-content: center;
+  height: 654px;
+  color: hsl(0, 0, 80);
+  width: 100%;
+}
+
 .QuoteList__info {
   flex: 1;
   padding-right: 16px;

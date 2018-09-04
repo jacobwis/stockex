@@ -14,10 +14,6 @@ const HomeView: React.StatelessComponent = () => {
         </Text>
         <QuoteListQuery name="mostactive">
           {({ data }) => {
-            if (!data) {
-              return <div />;
-            }
-
             return <QuoteList quotes={data.quoteList} />;
           }}
         </QuoteListQuery>

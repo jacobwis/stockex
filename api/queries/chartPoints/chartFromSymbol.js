@@ -1,13 +1,5 @@
 const axios = require('axios');
 
-const wait = ms => {
-  return new Promise(resolve => {
-    setTimeout(() => {
-      resolve();
-    }, ms);
-  });
-};
-
 const chartFromSymbol = async (_, { symbol, range }) => {
   const { data } = await axios.get(
     `https://api.iextrading.com/1.0/stock/${symbol}/chart/${range}`
