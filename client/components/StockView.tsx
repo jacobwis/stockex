@@ -1,11 +1,19 @@
 import * as React from 'react';
 import cn from 'classnames';
-import { LineChart, Line, Tooltip, ResponsiveContainer, YAxis } from 'recharts';
+import {
+  LineChart,
+  Line,
+  Tooltip,
+  ResponsiveContainer,
+  YAxis,
+  XAxis
+} from 'recharts';
 import { Stock, ChartQuery } from '../graphql';
 import Card from './Card';
 import Text from './Text';
 import NewsList from './NewsList';
 import StatTable from './StatTable';
+import StockChart from './StockChart';
 
 interface Props {
   stock: Stock;
@@ -41,7 +49,8 @@ class StockView extends React.Component<Props> {
           </div>
         </div>
         <div className="StockView__chart">
-          <ChartQuery symbol={stock.symbol}>
+          <StockChart symbol={stock.symbol} />
+          {/* <ChartQuery symbol={stock.symbol}>
             {({ data, loading }) => {
               if (!data) {
                 return <div />;
@@ -49,8 +58,11 @@ class StockView extends React.Component<Props> {
 
               return (
                 <ResponsiveContainer height={400} width="100%">
-                  <LineChart data={data.chartFromSymbol}>
-                    <Tooltip />
+                  <LineChart
+                    data={data.chartFromSymbol}
+                    margin={{ top: 0, left: 0, right: 0, bottom: 0 }}
+                  >
+                    <Tooltip cursor={false} isAnimationActive={false} />
                     <Line
                       isAnimationActive={false}
                       dataKey="value"
@@ -60,11 +72,12 @@ class StockView extends React.Component<Props> {
                       stroke="#4ea3f2"
                     />
                     <YAxis hide domain={['auto', 'auto']} />
+                    <XAxis dataKey="label" hide />
                   </LineChart>
                 </ResponsiveContainer>
               );
             }}
-          </ChartQuery>
+          </ChartQuery> */}
         </div>
         <Text className="StockView__description">{stock.description}</Text>
         <div className="StockView__stats">

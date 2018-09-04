@@ -1,0 +1,46 @@
+.StockChart {
+  padding: 0;
+}
+
+.StockChart__loading {
+  align-items: center;
+  color: hsl(0, 0, 80);
+  display: flex;
+  justify-content: center;
+  font-size: 48px;
+  height: 400px;
+}
+
+.StockChart__button {
+  border: none;
+  border-bottom: 2px solid transparent;
+  color: $text-color-light;
+  font-size: 15px;
+  font-weight: 500;
+  padding: 6px 10px;
+
+  @include hover {
+    color: $text-color-normal;
+  }
+
+  @include active {
+    color: $text-color-light;
+  }
+
+  @include focus {
+    outline: none;
+  }
+}
+
+.StockChart__button--selected {
+  border-color: $blue;
+  color: $blue;
+
+  @include hover {
+    color: $blue;
+  }
+
+  @include active {
+    color: $blue;
+  }
+}

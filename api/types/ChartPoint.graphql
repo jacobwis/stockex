@@ -4,5 +4,5 @@ type ChartPoint {
 }
 
 extend type Query {
-  chartFromSymbol(symbol: String!): [ChartPoint]
+  chartFromSymbol(symbol: String!, range: String!): [ChartPoint]
 }
