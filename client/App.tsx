@@ -5,12 +5,14 @@ import { StockQuery } from './graphql';
 import MainLayout from './components/MainLayout';
 import HomeView from './components/HomeView';
 import StockView from './components/StockView';
+import AboutView from './components/AboutView';
 
 const App: React.StatelessComponent = () => {
   return (
     <MainLayout>
       <Switch>
         <Route path="/" exact component={HomeView} />
+        <Route path="/about" component={AboutView} />
         <Route
           path="/:symbol"
           render={props => {

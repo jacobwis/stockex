@@ -1,0 +1,21 @@
+.AboutView {
+  padding: 32px;
+}
+
+.AboutView__text {
+  padding: 16px 0;
+}
+
+.AboutView__link {
+  color: $blue;
+  font-weight: 500;
+  text-decoration: none;
+
+  @include hover {
+    text-decoration: underline;
+  }
+
+  @include active {
+    text-decoration: none;
+  }
+}

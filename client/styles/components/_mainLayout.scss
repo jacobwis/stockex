@@ -11,3 +11,47 @@
   padding-top: 30px;
   width: 100%;
 }
+
+.MainLayout__footer {
+  align-items: center;
+  display: flex;
+  height: 70px;
+  max-width: 960px;
+  justify-content: space-between;
+  margin: 0 auto;
+  padding: 0 16px;
+  width: 100%;
+
+  @include min-width('lg') {
+    padding: 0;
+  }
+}
+
+.MainLayout__footer-link {
+  color: $text-color-light;
+  text-decoration: none;
+
+  @include hover {
+    color: $text-color-normal;
+    text-decoration: underline;
+  }
+
+  @include active {
+    color: $text-color-light;
+    text-decoration: none;
+  }
+}
+
+.MainLayout__footer-icon-link {
+  color: $text-color-light;
+  font-size: 20px;
+  text-decoration: none;
+
+  @include hover {
+    color: $text-color-normal;
+  }
+
+  @include active {
+    color: $text-color-light;
+  }
+}
