@@ -8,7 +8,7 @@ import {
   YAxis,
   XAxis
 } from 'recharts';
-import { Stock, ChartQuery } from '../graphql';
+import { Stock } from '../graphql';
 import Card from './Card';
 import Text from './Text';
 import NewsList from './NewsList';
@@ -19,16 +19,12 @@ interface Props {
   stock: Stock;
 }
 
-const mockData = [
-  { label: 'June', value: 2 },
-  { label: 'July', value: 8 },
-  { label: 'August', value: 5 },
-  { label: 'September', value: 4 }
-];
-
 class StockView extends React.Component<Props> {
   public render() {
     const { stock } = this.props;
+
+    if (!stock) return <div />;
+
     const changeColor = stock.changePercent >= 0 ? 'green' : 'red';
     return (
       <Card className="StockView" round>
@@ -50,34 +46,6 @@ class StockView extends React.Component<Props> {
         </div>
         <div className="StockView__chart">
           <StockChart symbol={stock.symbol} />
-          {/* <ChartQuery symbol={stock.symbol}>
-            {({ data, loading }) => {
-              if (!data) {
-                return <div />;
-              }
-
-              return (
-                <ResponsiveContainer height={400} width="100%">
-                  <LineChart
-                    data={data.chartFromSymbol}
-                    margin={{ top: 0, left: 0, right: 0, bottom: 0 }}
-                  >
-                    <Tooltip cursor={false} isAnimationActive={false} />
-                    <Line
-                      isAnimationActive={false}
-                      dataKey="value"
-                      dot={false}
-                      type="monotone"
-                      strokeWidth={2}
-                      stroke="#4ea3f2"
-                    />
-                    <YAxis hide domain={['auto', 'auto']} />
-                    <XAxis dataKey="label" hide />
-                  </LineChart>
-                </ResponsiveContainer>
-              );
-            }}
-          </ChartQuery> */}
         </div>
         <Text className="StockView__description">{stock.description}</Text>
         <div className="StockView__stats">

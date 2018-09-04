@@ -23,19 +23,22 @@ interface Props {
 const StatTable: React.StatelessComponent<Props> = ({ stock }) => {
   return (
     <div className="StatTable">
-      {renderItem('Open', stock.open.toFixed(2))}
-      {renderItem('High', stock.high.toFixed(2))}
-      {renderItem('Low', stock.low.toFixed(2))}
+      {renderItem('Open', stock.open ? stock.open.toFixed(2) : '-')}
+      {renderItem('High', stock.high ? stock.high.toFixed(2) : '-')}
+      {renderItem('Low', stock.low ? stock.low.toFixed(2) : '-')}
       {renderItem('Volume', numeral(stock.volume).format('0.0a'))}
       {renderItem(
         'Average Volume',
         numeral(stock.averageVolume).format('0.0a')
       )}
-      {renderItem('Yield', stock.dividendYield.toFixed(2))}
+      {renderItem(
+        'Yield',
+        stock.dividendYield ? stock.dividendYield.toFixed(2) : '-'
+      )}
       {renderItem('52 Week High', stock.week52High)}
       {renderItem('52 Week Low', stock.week52Low)}
       {renderItem('Market Cap', numeral(stock.marketCap).format('0.0a'))}
-      {renderItem('P/E Ratio', stock.peRatio.toFixed(2))}
+      {renderItem('P/E Ratio', stock.peRatio ? stock.peRatio.toFixed(2) : '-')}
     </div>
   );
 };
