@@ -15,4 +15,9 @@ describe('<NavBar />', () => {
 
     expect(navBar).toHaveClassName('NavBar');
   });
+
+  it('should have a link to the home page', () => {
+    const navBar = shallow(<NavBar />);
+    expect(navBar.find('[data-testid="nav-home"]')).toHaveProp('to', '/');
+  });
 });

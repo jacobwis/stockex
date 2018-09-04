@@ -6,6 +6,27 @@
   height: 100%;
   align-items: center;
   display: flex;
+  justify-content: space-between;
   max-width: 960px;
   margin: 0 auto;
+  padding: 0 16px;
+
+  @include min-width('lg') {
+    padding: 0;
+  }
+}
+
+.NavBar__home {
+  color: $blue;
+  font-size: 16px;
+  font-weight: 500;
+  text-decoration: none;
+
+  @include hover {
+    text-decoration: underline;
+  }
+
+  @include active {
+    text-decoration: none;
+  }
 }
