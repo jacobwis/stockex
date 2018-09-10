@@ -11,13 +11,23 @@
   height: 400px;
 }
 
+.StockChart__buttons {
+  display: flex;
+  justify-content: space-between;
+
+  @include min-width('md') {
+    display: block;
+  }
+}
+
 .StockChart__button {
+  background-color: transparent;
   border: none;
   border-bottom: 2px solid transparent;
   color: $text-color-light;
   font-size: 15px;
   font-weight: 500;
-  padding: 6px 10px;
+  padding: 6px;
 
   @include hover {
     color: $text-color-normal;
@@ -29,6 +39,10 @@
 
   @include focus {
     outline: none;
+  }
+
+  @include min-width('md') {
+    padding: 6px 10px;
   }
 }
 

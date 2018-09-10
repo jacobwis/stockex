@@ -95,20 +95,6 @@ class StockChart extends React.Component<Props, State> {
               </button>
             );
           })}
-          {/* <button
-            data-testid="stock-chart-button-1D"
-            className="StockChart__button"
-          >
-            1D
-          </button>
-          <button className="StockChart__button">1M</button>
-          <button className="StockChart__button">3M</button>
-          <button className="StockChart__button">6M</button>
-          <button className="StockChart__button">YTD</button>
-          <button className="StockChart__button">1Y</button>
-          <button className="StockChart__button">3Y</button>
-          <button className="StockChart__button">5Y</button>
-        </div> */}
         </div>
       </div>
     );
