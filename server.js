@@ -11,10 +11,11 @@ const NODE_ENV = process.env.NODE_ENV || 'development';
 const IS_PROD = NODE_ENV === 'production';
 
 if (IS_PROD) {
+  app.use(express.static('build'));
   app.use(express.static('assets'));
 
   app.get('*', (req, res) => {
-    fs.readFile('./assets/index.html', 'utf8', (err, data) => {
+    fs.readFile('./build/index.html', 'utf8', (err, data) => {
       res.send(data);
     });
   });

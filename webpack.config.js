@@ -16,7 +16,7 @@ const prodPlugins = [
 
 const config = {
   devServer: {
-    contentBase: [path.join(__dirname, 'assets')],
+    contentBase: [path.join(__dirname, 'build')],
     compress: true,
     hot: true,
     host: '0.0.0.0',
@@ -47,7 +47,7 @@ const config = {
     ]
   },
   output: {
-    path: path.resolve(__dirname, 'assets'),
+    path: path.resolve(__dirname, 'build'),
     filename: 'build.js',
     publicPath: '/'
   },
