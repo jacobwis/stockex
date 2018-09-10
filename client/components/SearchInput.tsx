@@ -1,7 +1,7 @@
 import * as React from 'react';
 import cn from 'classnames';
 import { Link } from 'react-router-dom';
-import { List } from 'react-virtualized';
+import { AutoSizer, List } from 'react-virtualized';
 import { SearchResult } from '../graphql';
 import Text from './Text';
 
@@ -80,31 +80,35 @@ class SearchInput extends React.Component<Props, State> {
           />
           {shouldShowResults && (
             <div className="SearchInput__results" data-testid="search-results">
-              <List
-                height={menuHeight}
-                rowHeight={48}
-                rowCount={searchResults.length}
-                width={300}
-                rowRenderer={({ key, index, style }) => {
-                  const result = searchResults[index];
-                  return (
-                    <Link
-                      className="SearchInput__result"
-                      key={key}
-                      to={`/${result.symbol}`}
-                      style={style}
-                      onClick={this.onBlur}
-                    >
-                      <Text color="light" truncate>
-                        <Text weight="medium" element="span">
-                          {result.symbol}
-                        </Text>
-                        {result.name && ` - ${result.name}`}
-                      </Text>
-                    </Link>
-                  );
-                }}
-              />
+              <AutoSizer disableHeight>
+                {({ width }) => (
+                  <List
+                    height={menuHeight}
+                    rowHeight={48}
+                    rowCount={searchResults.length}
+                    width={width}
+                    rowRenderer={({ key, index, style }) => {
+                      const result = searchResults[index];
+                      return (
+                        <Link
+                          className="SearchInput__result"
+                          key={key}
+                          to={`/${result.symbol}`}
+                          style={style}
+                          onClick={this.onBlur}
+                        >
+                          <Text color="light" truncate>
+                            <Text weight="medium" element="span">
+                              {result.symbol}
+                            </Text>
+                            {result.name && ` - ${result.name}`}
+                          </Text>
+                        </Link>
+                      );
+                    }}
+                  />
+                )}
+              </AutoSizer>
             </div>
           )}
         </div>

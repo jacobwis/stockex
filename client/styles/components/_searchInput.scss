@@ -15,7 +15,11 @@
 .SearchInput__wrapper {
   position: relative;
   height: 43px;
-  width: 300px;
+  width: 250px;
+
+  @include min-width('md') {
+    width: 300px;
+  }
 }
 
 .SearchInput__input {
@@ -36,6 +40,7 @@
 
 .SearchInput__results {
   overflow-y: scroll;
+  overflow-x: hidden;
   max-height: 200px;
 }
 
